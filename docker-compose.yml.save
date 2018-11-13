@@ -12,7 +12,7 @@ services:
     restart: always
   portainer:
     image: portainer/portainer
-    command: --templates http://templates/templates.json --admin-password '$apr1$rPtIPiiv$efp.C8Yz9vgP2NR2zSwfu1'
+    command: --templates http://templates/templates.json
     container_name: portainer
     volumes:
     - ./portainer_data:/data

@@ -1,0 +1,72 @@
+version: '2'
+services:
+  # MySQL (5.7)
+  app:
+    image: ambientum/php:7.2-nginx
+    container_name: stock-app
+    links:
+    - cache
+    - mysql
+    volumes:
+    - /home/golfcomsci/Sites/stock:/var/www/app
+    networks:
+    - webgateway
+    labels:
+    - traefik.backend=app
+    - traefik.frontend.rule=Host:stock.suptapee.com
+    - traefik.port=8080
+
+  # Laravel Queues
+  cache:
+    image: redis:4.0
+    command: --appendonly yes
+    container_name: stock-redis
+    volumes:
+    - stock-redis-data:/data
+    ports:
+    - 6379:6379
+    labels:
+    - traefik.enable=false
+    
+  # PHP (with Nginx)
+  # you can change from nginx to apache, just change session 'image'
+  mysql:
+    image: mysql:5.7
+    container_name: stock-mysql
+    volumes:
+    - stock-mysql-data:/var/lib/mysql
+    ports:
+    - 3306:3306
+    environment:
+    - MYSQL_DATABASE=stock
+    - MYSQL_PASSWORD=Zxc123zxc
+    - MYSQL_ROOT_PASSWORD=Zxc123zxc
+    - MYSQL_USER=stock
+    labels:
+    - traefik.enable=false
+  # Redis
+  queue:
+    image: ambientum/php:7.2
+    command: php artisan queue:listen
+    container_name: stock-queue
+    links:
+    - cache
+    - mysql
+    volumes:
+    - /home/golfcomsci/Sites/stock:/var/www/app
+    labels:
+    - traefik.enable=false
+# Named volumes
+volumes:
+  # MySQL Data
+  stock-mysql-data:
+    driver: local
+
+  # Redis Data
+  stock-redis-data:
+    driver: local
+
+networks:
+  webgateway:
+    external:
+      name: webgateway
