@@ -1,9 +1,1 @@
-{
-	"auths": {},
-	"HttpHeaders": {
-		"User-Agent": "Docker-Client/18.03.1-ce (linux)",
-		"X-PortainerAgent-ManagerOperation": "1",
-		"X-PortainerAgent-PublicKey": "3059301306072a8648ce3d020106082a8648ce3d03010703420004d6b3deaf9a1ec8801a7cef8455dfc4892a5313cd3586a94de7ae18ad3db4f76cb4ab3d12880244cf16a6f457603b2961378971666978a3e642a415d02fd5693d",
-		"X-PortainerAgent-Signature": "z/0S4XbGhDNW9qTmrMv1e4dTuOwur2SYhifIqcWs/qsjyj3+0mNybDzVFSjklkQigxOZf0nPhtnHEcOyB3/qsw"
-	}
-}
+{"HttpHeaders":{"User-Agent":"Docker-Client/18.03.1-ce (linux)","X-PortainerAgent-ManagerOperation":"1","X-PortainerAgent-PublicKey":"3059301306072a8648ce3d020106082a8648ce3d03010703420004d6b3deaf9a1ec8801a7cef8455dfc4892a5313cd3586a94de7ae18ad3db4f76cb4ab3d12880244cf16a6f457603b2961378971666978a3e642a415d02fd5693d","X-PortainerAgent-Signature":"YKg7zhgl1N0r0xric5C/jb7n2Jp2KxsKD/xKZnevfOzXPotAVBRSSiH2eqIPYSx/2zlDPZgD+pnlfPV1jqOjIA"},"auths":{}}

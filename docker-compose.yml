@@ -4,11 +4,11 @@ services:
     container_name: cloudflare
     image: oznu/cloudflare-ddns:latest # change 'latest' to 'armhf' or 'aarch64' if running on an arm device
     environment:
-    - API_KEY=30efe4ef86de71e5bd9e0e877dc80b81ce00e
+    - API_KEY=0bb2571ba0f6efd9ad2c98173127f23cba792
     - EMAIL=golfcomsci@outlook.com
     - PROXIED=false
-    - SUBDOMAIN=docker
-    - ZONE=chaiyapoj.site
+    - SUBDOMAIN=node2
+    - ZONE=pechsathid.com
     restart: always
   portainer:
     image: portainer/portainer
@@ -23,7 +23,7 @@ services:
     - webgateway
     labels:
     - traefik.backend=portainer
-    - traefik.frontend.rule=Host:portainer.chaiyapoj.site
+    - traefik.frontend.rule=Host:portainer.node2.pechsathid.com
     - traefik.port=9000
     restart: unless-stopped
   templates:
@@ -52,7 +52,7 @@ services:
     - traefik.backend=traefik
     - traefik.enable=true
       # Make sure this domain points to your IP so that traefik can request a cert
-    - traefik.frontend.rule=Host:traefik.chaiayapoj.site
+    - traefik.frontend.rule=Host:traefik.node2.pechsathid.com
    # Traefik will proxy to its own GUI
     - traefik.port=8080
     restart: unless-stopped
